@@ -110,7 +110,7 @@ var drone = false;
 				Pbind(
 					\instrument,  part[\inst][\perc],
 					\degree, Pseq(temp[\0][\deg] + shift),
-					\dur, Pseq([0.5 ].stutter(rand(4) + 4), 1),
+					\dur, Pseq([0.5 ].stutter(4.rand + 4), 1),
 					\ctranspose, -12
 
 				), #[0, 1, 0],
@@ -118,10 +118,10 @@ var drone = false;
 				Pbind(
 					\instrument,  part[\inst][\perc],
 					\degree, Pseq(temp[\1][\deg] + shift),
-					\dur, Pseq([0.5, 0.5, 0.5, 0.5].flat, 4),
+					\dur, Pseq([0.5, 0.5, 0.5, 0.5].flat, 2),
 					\ctranspose, -12
 
-				), #[0, 2, 0, 0],
+				), #[0, 2, 0],
 
 				nil, nil,
 			]),
@@ -133,7 +133,7 @@ var drone = false;
 					\instrument,part[\inst][\bass],
 					\degree, Pseq(temp[\0][\deg] + shift),
 					\dur, Pseq(temp[\0][\dur] * ~ds),
-				), #[0, 1],
+				), #[0, 1, 0],
 
 				Pbind(
 					\instrument,  part[\inst][\bass],
@@ -141,7 +141,7 @@ var drone = false;
 					\dur, Pseq(temp[\1][\dur] * ~ds),
 					\mtranspose, Prand([0, 7])
 
-				), #[0, 2, 1],
+				), #[0, 2, 1, 0],
 				nil, nil,
 		])], 1),
 
@@ -169,6 +169,7 @@ var drone = false;
 		if(drone == true, {
 		~drone.set(\gate, 0);
 	});
+
 	// Modulate every 2nd
 
 	if(~count % 2 == 0, {
@@ -241,7 +242,7 @@ var drone = false;
 					\dur, Pseq(temp[\1][\dur] * ~ds),
 					\mtranspose, Prand([0, 7]),
 					\release, temp[\1][\rel] * 1,
-				), #[0, 2, 1, 0, 0],
+				), #[0, 2, 1, 0],
 				nil, nil,
 		])], 1),
 		// global keys
@@ -283,4 +284,5 @@ Pseq([
 
 )
 
+s.meter;
 
