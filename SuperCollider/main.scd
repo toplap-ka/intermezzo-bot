@@ -54,5 +54,8 @@ s.waitForBoot {
 
 s.meter;
 
+// these are for starting stopping
+
 Ndef(\master).stop(10);
+
 Ndef(\master).play(fadeTime: 10);
