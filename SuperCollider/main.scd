@@ -26,8 +26,8 @@ s.waitForBoot {
 	// This Part ist still ab bit rudimentary
 	// and just to Test if everything is working and playing correctly
 
-	Ndef(\reverb).play(~mbus);
-	Ndef(\master).play;
+	Ndef(\reverb).play(~mbus, 2, addAction: \addToHead);
+	Ndef(\master).play(0);
 
 	Pseq([
 
