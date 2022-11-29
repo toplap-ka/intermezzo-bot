@@ -1,8 +1,3 @@
-
-// More memSize for the JPverb in Master
-s.options.memSize_(65536 * 4);
-s.reboot;
-
 // For playing the State Pattern just 3 Synths are needed:
 // Melody, Bass, Percussion
 

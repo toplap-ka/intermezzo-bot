@@ -11,12 +11,6 @@ var nextshift = 0;
 var nextds = 1;
 var drone = false;
 
-~root = 0;
-~ds = 1;
-~count = 0;
-~partRepeats = 4;
-
-
 /////////////////////////////////////////////////////////////////////////// PART I //////////////////////////////////////////////////////////////////
 
 // For each Part the is a Function evaluated by Plazy
@@ -253,36 +247,5 @@ var drone = false;
 	);
 });
 
-
-///////////////////////////////////////////// Play Parts ///////////////////////////////////////////////////
-
-// This Part ist still ab bit rudimentary
-// and just to Test if everything is working and playing correctly
-
-Ndef(\master).play;
-
-Pseq([
-
-	Pbind(\instrument, \drone,
-		\dur, Pseq([1, 2, 1, 1] * 1, 1),
-		\lfrange, 8,
-		\root, ~root
-	),
-
-	Pn(~p1, 4),
-
-	Pbind(\instrument, \drone,
-		\dur, Pseq([1, 2, 1, 1] * 1, 1),
-		\lfrange, 8,
-		\root, ~root
-	),
-
-	Pn(~p2, 8),
-
-
-], inf).play;
-
 )
-
-s.meter;
 
