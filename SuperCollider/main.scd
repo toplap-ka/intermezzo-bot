@@ -17,9 +17,10 @@ s.waitForBoot {
 
 	s.sync;
 
-	~drone.set(\gate, 1);
-	~drone = Synth(\drone, [\gate, 0]);
-	~drone = Synth(\drone);
+	// todo: i guess don't need these, right?
+	//~drone.set(\gate, 1);
+	//~drone = Synth(\drone, [\gate, 0]);
+	//~drone = Synth(\drone);
 
 	///////////////////////////////////////////// Play Parts ///////////////////////////////////////////////////
 
@@ -52,3 +53,6 @@ s.waitForBoot {
 )
 
 s.meter;
+
+Ndef(\master).stop(10);
+Ndef(\master).play(fadeTime: 10);
