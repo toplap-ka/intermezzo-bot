@@ -17,10 +17,9 @@ s.waitForBoot {
 
 	s.sync;
 
-	// todo: i guess don't need these, right?
-	//~drone.set(\gate, 1);
-	//~drone = Synth(\drone, [\gate, 0]);
-	//~drone = Synth(\drone);
+	~drone.set(\gate, 1);
+	~drone = Synth(\drone, [\gate, 0]);
+	~drone = Synth(\drone);
 
 	///////////////////////////////////////////// Play Parts ///////////////////////////////////////////////////
 
