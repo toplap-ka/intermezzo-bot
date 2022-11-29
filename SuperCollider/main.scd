@@ -1,7 +1,9 @@
 (
-// More memSize for the JPverb in Master
-//s.options.memSize_(65536 * 4);
-//s.reboot;
+if (s.options.memSize < (65536 * 4)) {
+	// More memSize for the JPverb in Master
+	s.options.memSize_(65536 * 4);
+	s.reboot;
+};
 
 ~root = 0;
 ~ds = 1;
