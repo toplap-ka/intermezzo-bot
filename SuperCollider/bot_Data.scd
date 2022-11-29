@@ -148,8 +148,3 @@
 
 )
 
-~drone.set(\gate, 1);
-~drone = Synth(\drone, [\gate, 0]);
-~drone = Synth(\drone);
-
-
