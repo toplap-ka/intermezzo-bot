@@ -17,17 +17,17 @@ s.waitForBoot {
 
 	s.sync;
 
-	// todo: i guess don't need these, right?
-	//~drone.set(\gate, 1);
-	//~drone = Synth(\drone, [\gate, 0]);
-	//~drone = Synth(\drone);
+	~drone.set(\gate, 1);
+	~drone = Synth(\drone, [\gate, 0, \out, ~mbus]);
+	~drone = Synth(\drone, [\out, ~mbus]);
 
 	///////////////////////////////////////////// Play Parts ///////////////////////////////////////////////////
 
 	// This Part ist still ab bit rudimentary
 	// and just to Test if everything is working and playing correctly
 
-	Ndef(\master).play;
+	Ndef(\reverb).play(~mbus, 2, addAction: \addToHead);
+	Ndef(\master).play(0);
 
 	Pseq([
 
@@ -54,5 +54,8 @@ s.waitForBoot {
 
 s.meter;
 
+// these are for starting stopping
+
 Ndef(\master).stop(10);
+
 Ndef(\master).play(fadeTime: 10);
