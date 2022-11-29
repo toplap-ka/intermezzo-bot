@@ -18,14 +18,15 @@ s.waitForBoot {
 	s.sync;
 
 	~drone.set(\gate, 1);
-	~drone = Synth(\drone, [\gate, 0]);
-	~drone = Synth(\drone);
+	~drone = Synth(\drone, [\gate, 0, \out, ~mbus]);
+	~drone = Synth(\drone, [\out, ~mbus]);
 
 	///////////////////////////////////////////// Play Parts ///////////////////////////////////////////////////
 
 	// This Part ist still ab bit rudimentary
 	// and just to Test if everything is working and playing correctly
 
+	Ndef(\reverb).play(~mbus);
 	Ndef(\master).play;
 
 	Pseq([

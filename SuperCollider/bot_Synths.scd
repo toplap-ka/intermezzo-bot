@@ -4,6 +4,7 @@
 // All Extra Synths are played outside the State Pattern
 
 (
+~rbus = Bus.audio(s, 2);
 ~mbus = Bus.audio(s, 2);
 
 SynthDef(\bSaw, { |freq = 500, fb = 1.25, gate = 1, release = 0.5, lfrange = 2, out = 0|
@@ -122,11 +123,11 @@ SynthDef(\drone, { |freq = 100,  amps = #[0.2, 0.1,  0.1], rings = #[0.1, 0.25, 
 }).add;
 
 
-Ndef(\master, { |wet = 0.1, r_level = 0.2|
+Ndef(\reverb, { |wet = 0.1, r_level = 0.2|
 
 	var snd, reverb, fb, hsnd, low, pitch, hasPitch, res;
 
-	snd = In.ar(~mbus, 2);
+	snd = In.ar(~rbus, 2);
 	snd = Compander.ar(snd * 2, snd * 2, 0.5, 1.0, 0.5, 0.001) * 0.5;
 	#pitch, hasPitch = Pitch.kr(snd);
 	fb = LocalIn.ar(2);
@@ -146,5 +147,10 @@ Ndef(\master, { |wet = 0.1, r_level = 0.2|
 
 	snd = snd;
 
+});
+
+Ndef(\master, {
+	var snd = In.ar(~mbus, 2);
+	snd = snd;
 });
 )

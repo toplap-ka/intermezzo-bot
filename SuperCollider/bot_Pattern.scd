@@ -49,7 +49,7 @@ var drone = false;
 	if(~ds > 1, {
 		~drone = Synth(\drone, [
 				\freq, (48 + ~root).midicps,
-				\out, ~mbus
+				\out, ~rbus
 		]);
 		drone = true;
 	},{drone == false});
@@ -69,7 +69,7 @@ var drone = false;
 	Ndef(\master).set(\r_level, 0.2);
 
 	// Some wusch at every start :)
-	Synth(\fx, [\amp, 1.0.rand, \out, ~mbus]);
+	Synth(\fx, [\amp, 1.0.rand, \out, ~rbus]);
 
 	// One Pfsm for each instrument combined in one Event Stream using Ppar
 	// The Part is Over when EVERY Instrument / StateMachine is finished -> nil, nil
@@ -143,7 +143,7 @@ var drone = false;
 
 		\root, ~root,
 		\release, 0.5,
-		\out, ~mbus,
+		\out, ~rbus,
 		\scale, scale
 
 	);
@@ -243,7 +243,7 @@ var drone = false;
 
 		\root, ~root,
 		\scale, scale,
-		\out, ~mbus
+		\out, ~rbus
 	);
 });
 
