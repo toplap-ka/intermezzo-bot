@@ -68,7 +68,6 @@ SynthDef(\fx, { |freq = 500, release = 1, fb = 1.25, amp = 1, out = 0|
 
 }).add;
 
-
 SynthDef(\kick, { |freq = 100, release = 1, fb = 1.25, dur = 0.1, drop = 0.05, out = 0|
 
 	var snd, env, env2, lfo, lfn, kick, bass, hsnd;
@@ -84,7 +83,7 @@ SynthDef(\kick, { |freq = 100, release = 1, fb = 1.25, dur = 0.1, drop = 0.05, o
 	bass = SinOscFB.ar(freq * 0.25, 1.0) * lfo;
 	bass = BPF.ar(bass, freq * env.range(0.5, 4) * lfn * 2, 0.1) * 8;
 
-	snd = kick + bass.tanh * 0.125;
+	snd = kick + (bass.tanh * 0.125);
 
 	hsnd = HPF.ar(snd, 900);
 	hsnd = FreeVerb.ar(hsnd, 1.0, 0.7) * 0.5 + snd;
